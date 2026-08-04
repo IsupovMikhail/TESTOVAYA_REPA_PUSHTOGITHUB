@@ -9,6 +9,7 @@ import pages.LoginPage;
 import pages.ProductsPage;
 
 import java.time.Duration;
+import java.util.Map;
 
 public class BaseTest {
     public WebDriver driver;
@@ -18,12 +19,16 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--guest");
-        //options.addArguments("--incognito");
         options.addArguments("start-maximized");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-popup-blocking");
+        options.setExperimentalOption("prefs", Map.of(
+                "credentials_enable_service", false,
+                "profile.password_manager_enabled", false
+        ));
         driver = new ChromeDriver(options);
         driver.get("https://saucedemo.com");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);

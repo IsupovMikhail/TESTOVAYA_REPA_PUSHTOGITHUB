@@ -25,8 +25,8 @@ public class LoginPage extends BasePage {
 
     public boolean isErrorDisplayed(){
        return driver.findElement(error).isDisplayed();
-        //String errorText = driver.findElement(By.cssSelector("[data-test='error']")).getText();
     }
+
     public String getErrorText () {
         return driver.findElement(error).getText();
     }
