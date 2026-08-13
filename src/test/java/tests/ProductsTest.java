@@ -1,7 +1,6 @@
 package tests;
 
 import org.testng.annotations.Test;
-import user.UserFactory;
 
 import java.util.List;
 import static org.testng.Assert.assertEquals;
