@@ -1,6 +1,5 @@
 package pages;
 
-import com.google.j2objc.annotations.Property;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
