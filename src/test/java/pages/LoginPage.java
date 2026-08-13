@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import user.User;
 
 public class LoginPage extends BasePage {
@@ -16,6 +17,7 @@ public class LoginPage extends BasePage {
 
     public void open() {
         driver.get(BASE_URL);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginInput));
     }
 
     public void login(User user) {
