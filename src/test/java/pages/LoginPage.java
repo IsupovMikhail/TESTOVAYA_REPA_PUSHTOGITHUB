@@ -1,7 +1,9 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import user.User;
 
 public class LoginPage extends BasePage {
@@ -14,20 +16,25 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Открываем браузер")
     public void open() {
         driver.get(BASE_URL);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginInput));
     }
 
+    @Step("Входим под данными: {user.login}, пароль: {user.password}")
     public void login(User user) {
         driver.findElement(loginInput).sendKeys(user.getLogin());
         driver.findElement(passwordInput).sendKeys(user.getPassword());
         driver.findElement(loginBtn).click();
     }
 
+    @Step("Проверяем отображение сообщения об ошибке")
     public boolean isErrorDisplayed(){
        return driver.findElement(error).isDisplayed();
     }
 
+    @Step("Проверяем текст сообщения об ошибке")
     public String getErrorText () {
         return driver.findElement(error).getText();
     }
